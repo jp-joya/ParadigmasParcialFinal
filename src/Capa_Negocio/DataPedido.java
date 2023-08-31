@@ -75,6 +75,9 @@ public class DataPedido {
 
 		
 	}
+        public DataPedido get(int n){
+            return ListaPedidos().get(n);
+        }
 
 	@Override
 	public String toString() {
