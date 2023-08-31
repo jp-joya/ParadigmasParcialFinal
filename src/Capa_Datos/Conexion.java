@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class Conexion {
 	
-	private final String url="jdbc:mysql://localhost:3306/ventas";
+	private final String url="jdbc:mysql://localhost:3306/adelita";
 	private final String user="root";
 	private final String pwt="";
         
