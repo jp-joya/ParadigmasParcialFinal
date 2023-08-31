@@ -113,7 +113,6 @@ public class Formulario_Articulo extends javax.swing.JFrame {
         Recibo = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         reciboTxt = new javax.swing.JTextArea();
-        detalles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -232,13 +231,6 @@ public class Formulario_Articulo extends javax.swing.JFrame {
         reciboTxt.setRows(5);
         jScrollPane4.setViewportView(reciboTxt);
 
-        detalles.setText("Detalles");
-        detalles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detallesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,27 +274,20 @@ public class Formulario_Articulo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JBtSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(detalles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JBtSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(detalles))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(JlbCodigo)
-                                    .addComponent(JtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JlbCodigo)
+                            .addComponent(JtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JlbNombre)
@@ -320,7 +305,8 @@ public class Formulario_Articulo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                            .addComponent(agregar))))
+                            .addComponent(agregar)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -361,25 +347,28 @@ public class Formulario_Articulo extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Articulo guardado exitosamente.");
         ListarArticulos();
         } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null,e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(null,"Inserte valores para grabar.");
   
         }
          
     }//GEN-LAST:event_JBtGrabarActionPerformed
 
     private void JBtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtEliminarActionPerformed
-        int Res=JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar "+this.JtfCodigo.getText()+ "?");
-        if (Res==0) {
+
+        if(JtfCodigo.getText().equals("")) 
+        {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un artículo que exista para Eliminar.");
+            //return;
+        } else {
+            int Res=JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar "+this.JtfCodigo.getText()+ "?");
             DataArticulo objart = new DataArticulo();
             objart.setArt_cod(this.JtfCodigo.getText());
-            JOptionPane.showMessageDialog(null, objart.EliminarArticulo());
+            objart.EliminarArticulo();
             ListarArticulos();
-            if (!objart.EliminarArticulo().equals("Articulo no encontrado")) {
-               JOptionPane.showMessageDialog(null, "Articulo eliminado"); 
-            }
-        }
+           }  
     }//GEN-LAST:event_JBtEliminarActionPerformed
-
+    
+    
     private void JBtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtSalirActionPerformed
         int r=JOptionPane.showConfirmDialog(null, "¿Está seguro?");
         if (r==0) {
@@ -402,14 +391,15 @@ public class Formulario_Articulo extends javax.swing.JFrame {
         objart.setArt_pre(Double.parseDouble(this.JtfPrecio.getText()));
     
         if (!objart.EditarArticulo().equals("Articulo no encontrado")) {
-               JOptionPane.showMessageDialog(null, objart.EditarArticulo()); 
+                objart.EditarArticulo();
+               JOptionPane.showMessageDialog(null,"Articulo modificado."); 
             }
         else{
             JOptionPane.showMessageDialog(null, "Articulo no encontrado"); 
         }
         ListarArticulos();
         } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null,e.getMessage());
+            javax.swing.JOptionPane.showMessageDialog(null,"No se ha encontrado.");
   
         }
     }//GEN-LAST:event_JBtModificarActionPerformed
@@ -464,18 +454,6 @@ public class Formulario_Articulo extends javax.swing.JFrame {
         // TODO add your handling code here:
         generarRecibo();
     }//GEN-LAST:event_ReciboActionPerformed
-
-    private void detallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detallesActionPerformed
-        // TODO add your handling code here:
-        int selec= this.historial.getSelectedRow();
-        DataPedido temp = new DataPedido();
-        for(int i = 0 ; i<historial.getRowCount();i++){
-            if(selec==i){
-                temp = temp.get(i);
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Producto/Precio/Cantidad\n\n" + temp.get(selec).toString());
-    }//GEN-LAST:event_detallesActionPerformed
     public void actualizarFactura() {
 		int filas = carritoModelo.getRowCount();
 		for(int i=0;filas>i;i++) {
@@ -564,7 +542,6 @@ public class Formulario_Articulo extends javax.swing.JFrame {
     private javax.swing.JButton agregar;
     private javax.swing.JTable articulos;
     private javax.swing.JTable carrito;
-    private javax.swing.JButton detalles;
     private javax.swing.JButton finalizarPedido;
     private javax.swing.JTable historial;
     private javax.swing.JScrollPane jScrollPane1;
