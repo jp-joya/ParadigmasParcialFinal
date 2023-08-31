@@ -263,7 +263,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="carritoModelo.addColumn(&quot;Producto&quot;);&#xa;carritoModelo.addColumn(&quot;Precio&quot;);&#xa;carritoModelo.addColumn(&quot;Camtidad&quot;);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="carritoModelo.addColumn(&quot;Producto&quot;);&#xa;carritoModelo.addColumn(&quot;Precio&quot;);&#xa;carritoModelo.addColumn(&quot;Cantidad&quot;);"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="carritoModelo = new DefaultTableModel();"/>
           </AuxValues>
         </Component>
