@@ -370,20 +370,20 @@ public class Formulario_Articulo extends javax.swing.JFrame {
     }//GEN-LAST:event_JBtGrabarActionPerformed
 
     private void JBtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtEliminarActionPerformed
-        int Res=JOptionPane.showConfirmDialog(null, "Esta seguro de Eliminar"+this.JtfCodigo.getText());
+        int Res=JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar "+this.JtfCodigo.getText()+ "?");
         if (Res==0) {
             DataArticulo objart = new DataArticulo();
             objart.setArt_cod(this.JtfCodigo.getText());
             JOptionPane.showMessageDialog(null, objart.EliminarArticulo());
             ListarArticulos();
             if (!objart.EliminarArticulo().equals("Articulo no encontrado")) {
-               JOptionPane.showMessageDialog(null, "Articulo Eliminado"); 
+               JOptionPane.showMessageDialog(null, "Articulo eliminado"); 
             }
         }
     }//GEN-LAST:event_JBtEliminarActionPerformed
 
     private void JBtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtSalirActionPerformed
-        int r=JOptionPane.showConfirmDialog(null, "Esta seguro?");
+        int r=JOptionPane.showConfirmDialog(null, "¿Está seguro?");
         if (r==0) {
             System.exit(0);
         }
@@ -444,7 +444,7 @@ public class Formulario_Articulo extends javax.swing.JFrame {
            if(carritoModelo.getRowCount()!=0){
                 pedido.setFecha(LocalDateTime.now());
                 pedido.CrearPedido();
-                JOptionPane.showMessageDialog(null, "Pedido Archivado Exitosamente");
+                JOptionPane.showMessageDialog(null, "Pedido archivado exitosamente");
                 limpiarCarrito();
                 ListarPedidos();
                 nuevoPedido();
@@ -514,7 +514,7 @@ public class Formulario_Articulo extends javax.swing.JFrame {
 		reciboTxt.append("\n --------------------------------------------\n");
 		reciboTxt.append("   TOTAL		  " + pedido.calcularTotal());
 		reciboTxt.append("\n --------------------------------------------\n");			
-		reciboTxt.append("               Gracias Por Tu Compra!");
+		reciboTxt.append("               ¡Gracias Por Tu Compra!");
 		reciboTxt.append("\n --------------------------------------------\n");
 		reciboTxt.setFont(new Font("Tahoma", Font.BOLD, 15));
 	}
