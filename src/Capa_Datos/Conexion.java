@@ -35,7 +35,7 @@ public class Conexion {
         PreparedStatement da = cn.prepareStatement(Cad);
         int r = da.executeUpdate();
         if (r!=0) {
-            return "Se afectaron " + r + " filas";
+            return "";
         }
 	return "Articulo no encontrado";
     } catch (SQLException e) {

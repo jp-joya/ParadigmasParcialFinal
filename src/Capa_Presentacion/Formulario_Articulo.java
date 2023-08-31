@@ -343,7 +343,8 @@ public class Formulario_Articulo extends javax.swing.JFrame {
         objart.setArt_cod(this.JtfCodigo.getText());
         objart.setArt_nom(this.JtfNombre.getText());
         objart.setArt_pre(Double.parseDouble(this.JtfPrecio.getText()));
-        JOptionPane.showMessageDialog(null, objart.GrabarArticulo());
+        objart.GrabarArticulo();
+        JOptionPane.showMessageDialog(null, "Articulo guardado exitosamente.");
         ListarArticulos();
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(null,e.getMessage());
@@ -430,7 +431,8 @@ public class Formulario_Articulo extends javax.swing.JFrame {
        try {
            if(carritoModelo.getRowCount()!=0){
                 pedido.setFecha(LocalDateTime.now());
-                JOptionPane.showMessageDialog(null, pedido.CrearPedido());
+                pedido.CrearPedido();
+                JOptionPane.showMessageDialog(null, "Pedido Archivado Exitosamente");
                 limpiarCarrito();
                 ListarPedidos();
                 nuevoPedido();
